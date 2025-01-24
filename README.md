@@ -17,10 +17,6 @@ Le circolari scolastiche sono spesso difficili da capire perché usano un lingua
 
 ---
 
-Ecco una proposta di documentazione per il tuo progetto da caricare su GitHub:
-
----
-
 ## Struttura del progetto
 
 ```
@@ -103,5 +99,3 @@ font = "sans serif"
 Questo progetto è distribuito sotto la licenza [MIT](LICENSE).
 
 --- 
-
-Fammi sapere se vuoi aggiungere sezioni specifiche!
