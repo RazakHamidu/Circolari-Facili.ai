@@ -1,0 +1,7 @@
+[theme]
+base = "light"  # Imposta il tema chiaro (White Mode)
+primaryColor = "blue"  # Colore principale
+backgroundColor = "white"  # Colore di sfondo bianco
+secondaryBackgroundColor = "#f0f0f0"  # Colore di sfondo secondario chiaro
+textColor = "black"  # Colore del testo nero
+font = "sans serif"  # Tipo di font
