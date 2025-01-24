@@ -47,8 +47,8 @@ Per eseguire il progetto, assicurati di avere installati i seguenti strumenti:
 1. Clona il repository:
 
    ```bash
-   git clone https://github.com/tuo-utente/circolari-facili-ai.git
-   cd circolari-facili-ai
+   git clone https://github.com/RazakHamidu/Circolari-Facili.ai.git
+   cd Circolari-Facili.ai
    ```
 
 2. Crea un ambiente virtuale:
