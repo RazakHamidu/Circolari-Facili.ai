@@ -1,6 +1,6 @@
 # Importa le librerie necessarie
 import streamlit as st  # Per creare l'interfaccia utente
-import fitz  # PyMuPDF, usato per leggere i file PDF
+import pdfplumber
 import os  # Per gestire i file e le variabili di ambiente
 import google.generativeai as genai  # Per usare il modello generativo di Google
 from dotenv import load_dotenv  # Per caricare le variabili di ambiente da un file .env
@@ -24,16 +24,11 @@ uploaded_file = st.file_uploader("Carica il circolare", type=["pdf"])
 
 # Se l'utente carica un file
 if uploaded_file is not None:
+    with pdfplumber.open(uploaded_file) as pdf:
+        for page in pdf.pages:
+           testo_pdf = page.extract_text()
 
-    # Apre il file PDF caricato e lo salva in una variabile temporanea
-    pdf_document = fitz.open(stream=uploaded_file.read(), filetype="pdf")
-
-    # Crea una variabile per memorizzare il testo estratto
-    text = ""
-    # Cicla su ogni pagina del PDF e estrae il testo
-    for page_num in range(pdf_document.page_count):
-        page = pdf_document.load_page(page_num)  # Carica una pagina
-        text += page.get_text()  # Aggiungi il testo della pagina alla variabile 'text'
+  
 
     # Definisce le istruzioni per il modello generativo (comprimere il testo in modo semplice)
     prompt_system = """
@@ -51,7 +46,7 @@ if uploaded_file is not None:
         system_instruction=prompt_system)
 
     # Usa il modello per generare una versione semplificata del testo estratto dal PDF
-    response = model.generate_content(f"{text}")
+    response = model.generate_content(f"{testo_pdf}")
 
     # Mostra il testo semplificato nell'interfaccia utente di Streamlit
     with st.container(border=True):
